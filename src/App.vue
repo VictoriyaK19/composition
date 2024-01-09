@@ -4,7 +4,18 @@
   </section>
 </template>
 
-<script>
+
+<script setup>
+import { ref } from 'vue';
+ 
+const uName = ref('Maximilian');
+ 
+setTimeout(function() {
+  uName.value = 'Max';
+}, 2000);
+</script>
+
+<!-- <script>
 import { ref } from 'vue';
 
 export default {
@@ -23,7 +34,7 @@ export default {
   //   };
   // },
 };
-</script>
+</script> -->
 
 <style>
 * {
