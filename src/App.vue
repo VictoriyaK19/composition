@@ -1,6 +1,6 @@
 <template>
   <section class="container">
-    <h2>{{ uNameName }}</h2>
+    <h2>{{ uName}}</h2>
   </section>
 </template>
 
