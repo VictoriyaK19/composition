@@ -1,11 +1,12 @@
 <template>
   <section class="container">
-    <h2>{{ uName}}</h2>
+    <h2>{{ user.name }}</h2>
+    <h3>{{ user.age }}</h3>
   </section>
 </template>
 
 
-<script setup>
+<!-- <script setup>
 import { ref } from 'vue';
  
 const uName = ref('Maximilian');
@@ -13,20 +14,31 @@ const uName = ref('Maximilian');
 setTimeout(function() {
   uName.value = 'Max';
 }, 2000);
-</script>
+</script> -->
 
-<!-- <script>
-import { ref } from 'vue';
+<script>
+import { reactive } from 'vue';
 
 export default {
   setup() {
-    const uName = ref('Maximilian');
+    // const uName = ref('Maximilian');
+    // const uAge = ref(31);
+    const user = reactive({
+      // uName.value = "Max";
+      name: 'Maximilian',
+      age: 31
+    });
+
+    console.log(user);
 
     setTimeout(function() {
-      uName.value = 'Max';
+      // uName.value = 'Max';
+      // uAge.value = 32;
+      user.name = 'Max';
+      user.age = 32
     }, 2000)
 
-    return { userName: uName};
+    return { user: user};
   }
   // data() {
   //   return {
@@ -34,7 +46,7 @@ export default {
   //   };
   // },
 };
-</script> -->
+</script>
 
 <style>
 * {
