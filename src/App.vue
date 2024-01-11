@@ -1,6 +1,6 @@
 <template>
   <section class="container">
-    <user-data :first-name="firstName" :last-name="lastName" :age="age"></user-data>
+    <user-data :first-name="firstName" :last-name="lastName"></user-data>
     <button @click="setAge">Change Age</button>
     <div>
       <input type="text" placeholder="First Name" v-model="firstName" />
@@ -21,12 +21,12 @@ setTimeout(function() {
 </script> -->
 
 <script>
-import { ref, computed, watch } from "vue";
-import UserData from '@/components/UserData';
+import { ref, computed, watch, provide } from "vue";
+import UserData from "@/components/UserData";
 
 export default {
   components: {
-    'user-data': UserData
+    "user-data": UserData,
   },
   setup() {
     // const uName = ref("Maximilian");
@@ -39,20 +39,22 @@ export default {
     //   name: 'Maximilian',
     //   age: 31
     // });
-    const uName = computed(function() {
+
+      provide('userAge', uAge);
+
+    const uName = computed(function () {
       return `${firstName.value} ${lastName.value}`;
     });
 
-    watch([uAge, uName], function(newValues, oldValues) {
-      console.log('Old age: ' + oldValues[0] );
-      console.log('New age: ' + newValues[0]);
-      console.log('Old name: ' + oldValues[1] );
-      console.log('New name: ' + newValues[1]);
+    watch([uAge, uName], function (newValues, oldValues) {
+      console.log("Old age: " + oldValues[0]);
+      console.log("New age: " + newValues[0]);
+      console.log("Old name: " + oldValues[1]);
+      console.log("New name: " + newValues[1]);
     });
 
-
     function setNewAge() {
-    uAge.value = 32;
+      uAge.value = 32;
     }
     function setLastName() {
       lastName.value = lastNameInput.value.value;
@@ -64,7 +66,7 @@ export default {
       firstName,
       lastName,
       lastNameInput,
-      setLastName
+      setLastName,
     };
   },
 
@@ -83,6 +85,9 @@ export default {
   //     console.log(val);
   //   }
   // }
+  //   provide() {
+  //     return { age: this.age }
+  //   }
 };
 </script>
 
