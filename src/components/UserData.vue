@@ -36,7 +36,6 @@ export default {
     onMounted(() => console.log("onMounted"));
     onBeforeUpdate(() => console.log('onBeforeUpdate'));
     onUpdated(() => console.log('OnUpdated'));
-    onBeforeUpdate(() => console.log('onBeforeUpdate'));
     onBeforeUnmount(() => console.log('onBeforeUnmount'));
     onUnmounted(() => console.log('onUnmounted'));
 
